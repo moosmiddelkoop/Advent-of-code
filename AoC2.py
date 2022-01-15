@@ -1,13 +1,9 @@
 # Advent of code day 2
 # Moos Middelkoop
 
-instructions = []
+import aoc_helper
 
-with open('data/input2.txt', 'r') as f:
-    for line in f:
-        line = line.strip('\n')
-        instructions.append(line)
-
+RAW = aoc_helper.read_data('data/input2.txt')
 
 def part_one(instructions):
 
@@ -27,8 +23,6 @@ def part_one(instructions):
 
     return x * y
 
-print(f"The solution for part 1 is: {part_one(instructions)}")
-
 
 def part_two(instructions):
 
@@ -47,6 +41,9 @@ def part_two(instructions):
             aim += int(split[1])
         elif split[0] == 'up':
             aim -= int(split[1])
+
     return x * y
 
+
+print(f"The solution for part 1 is: {part_one(instructions)}")
 print(f"The solution for part 2 is: {part_two(instructions)}")
