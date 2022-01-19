@@ -1,31 +1,28 @@
+import aoc_helper
 
-# read input
-depths = []
+RAW = aoc_helper.read_data("data/input1.txt")
+DATA = aoc_helper.to_ints(RAW)
 
-with open("data/input1.txt", 'r') as f:
-    for line in f:
-        line = line.strip('\n')
-        depths.append(int(line))
+def part_one(input):
 
-def first(depths):
-
+    # initialize
     counter = 0
 
-    for i in range(len(depths)):
+    for i in range(len(input)):
 
-        if i > 0 and depths[i] > depths[i - 1]:
+        if i > 0 and input[i] > input[i - 1]:
             counter += 1
 
     return counter
 
-def second(depths):
+def part_two(input):
 
     # initialize
     counter = 0
     last_window_sum = 0
 
-    for i in range(len(depths)):
-        window_sum = depths[i] + depths[i-1] + depths[i-2]
+    for i in range(len(input)):
+        window_sum = input[i] + input[i-1] + input[i-2]
 
         # only count when there are actual windows
         if i > 2 and window_sum > last_window_sum:
@@ -35,5 +32,7 @@ def second(depths):
 
     return counter
 
-print(first(depths))
-print(second(depths))
+print(part_one(DATA))
+print(part_two(DATA))
+
+# hello this is a test of branch test
