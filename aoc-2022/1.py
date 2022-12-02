@@ -1,6 +1,6 @@
 def part1():
 
-    with open('input_day1.txt', 'r') as f:
+    with open('inputs/1.txt', 'r') as f:
 
         elves = []
         elf = []
