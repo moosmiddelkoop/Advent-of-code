@@ -12,6 +12,7 @@ def read_input(input):
 
     return opp_moves, my_moves
 
+
 def part1(input):
 
     opp_moves, my_moves = read_input(input)
@@ -48,6 +49,7 @@ def part1(input):
         
     return score
 
+
 def part2(input):
 
     opp_moves, outcomes = read_input(input)
@@ -56,7 +58,6 @@ def part2(input):
     moves_dict = {'A': {'triumphs': 'C', 'loses_to': 'B'},
                   'B': {'triumphs': 'A', 'loses_to': 'C'},
                   'C': {'triumphs': 'B', 'loses_to': 'A'}}
-
 
     score = 0
 
