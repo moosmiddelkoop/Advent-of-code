@@ -1,3 +1,5 @@
+from aoc_helper import *
+
 def read_input(input, part=1):
 
     first_comps = []
@@ -93,8 +95,10 @@ def part2(input):
 
     return score
 
-print('Solution to part 1:')
-print(part1('inputs/3.txt'))
+# print('Solution to part 1:')
+# print(part1('inputs/3.txt'))
 
-print('Solution to part 2:')
-print(part2('inputs/3.txt'))
+# print('Solution to part 2:')
+# print(part2('inputs/3.txt'))
+
+run('inputs/3.txt', part1, part2)
