@@ -22,7 +22,6 @@ def read_input(input, part=1):
             elif part == 2:
                 
                 group.append(line[:-1])
-                # print(group)
 
                 # add group + reset each 3 entries
                 if (i+ 1) % 3 == 0:
@@ -39,19 +38,12 @@ def get_doubles(input):
     first_comps, second_comps = read_input(input)
     doubles = []
 
-    i = 0
     for item1, item2 in zip(first_comps, second_comps):
 
         item1_set = set(item1)
         item2_set = set(item2)
 
-        for letter in item1_set:
-
-            if letter in item2_set:
-
-                doubles.append(letter)
-
-        i += 1
+        doubles.append(item1_set.intersection(item2_set).pop())
 
     return doubles
 
@@ -84,21 +76,13 @@ def part2(input):
     for group in groups:
 
         group_sets = [set(elf) for elf in group]
+        common = (group_sets[0] & group_sets[1] & group_sets[2]).pop()
 
-        for letter in group_sets[0]:
-            if letter in group_sets[1] and letter in group_sets[2]:
-
-                if letter.islower():
-                    score += ord(letter) - 96
-                else:
-                    score += ord(letter) - 38
+        if common.islower():
+            score += ord(common) - 96
+        else:
+            score += ord(common) - 38
 
     return score
-
-# print('Solution to part 1:')
-# print(part1('inputs/3.txt'))
-
-# print('Solution to part 2:')
-# print(part2('inputs/3.txt'))
 
 run('inputs/3.txt', part1, part2)
