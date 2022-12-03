@@ -35,7 +35,7 @@ def run(input, part1, part2):
         end = time.time()
 
         print(solution)
-        print(f"this took {end-start} seconds")
+        print(f"this took {(end - start) * 1000} ms")
     except:
         print("There is no function for part 1 yet")
 
@@ -47,6 +47,6 @@ def run(input, part1, part2):
         end = time.time()
 
         print(solution)
-        print(f"this took {end-start} seconds")
+        print(f"this took {(end - start) * 1000} ms")
     except:
         print("There is no function for part 2 yet")
