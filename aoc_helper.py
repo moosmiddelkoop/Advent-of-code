@@ -15,7 +15,7 @@ def read_data(filepath):
 
 def to_ints(data):
     '''
-    Turns raw data into ints if input is list of ints
+    Turns raw data into ints if input is list of ints represented as strings
     '''
 
     ints = []
@@ -23,3 +23,5 @@ def to_ints(data):
         ints.append(int(line))
 
     return ints
+
+    
