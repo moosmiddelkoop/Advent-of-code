@@ -2,7 +2,7 @@ from aoc_helper import *
 
 # CHANGE DAY
 DAY = 5
-NUM_CRATES = 9
+NUM_CRATES = 30
 
 def read_input(input):
 
@@ -33,7 +33,7 @@ def part1(input):
     stacks = read_input(input)
 
     # perform instructions
-    with open('inputs/5_instructions.txt', 'r') as f:
+    with open('inputs/5_part3_instructions.txt', 'r') as f:
         
         for line in f.readlines():
 
@@ -59,7 +59,7 @@ def part2(input):
     stacks = read_input(input)
 
     # perform instructions
-    with open('inputs/5_instructions.txt', 'r') as f:
+    with open('inputs/5_part3_instructions.txt', 'r') as f:
         
         for line in f.readlines():
 
@@ -82,5 +82,6 @@ def part2(input):
 
     return solution
 
-run(f'inputs/{DAY}_crates.txt', part1, part2)
+# print(part1('inputs/5_part3_crates.txt'))
+run(f'inputs/5_part3_crates.txt', part1, part2)
 
