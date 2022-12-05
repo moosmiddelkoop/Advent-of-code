@@ -50,3 +50,27 @@ def run(input, part1, part2):
         print(f"this took {(end - start) * 1000} ms")
     except:
         print("There is no function for part 2 yet")
+
+# Implements a stack
+class Stack:
+
+    def __init__(self):
+        self._data = []
+
+    def push(self, element):
+        self._data.append(element)
+        return
+
+    def pop(self):
+        assert self.size() > 0
+        return self._data.pop(-1)
+
+    def size(self):
+        return len(self._data)
+
+    def peek(self):
+        return self._data[-1]
+
+    def empty(self):
+        self._data = []
+        return
