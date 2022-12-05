@@ -82,7 +82,5 @@ def part2(input):
 
     return solution
 
-# print(part1('inputs/5_crates.txt', 'inputs/5_instructions.txt'))
-# print(part2('inputs/5_crates.txt', 'inputs/5_instructions.txt'))
 run(f'inputs/{DAY}_crates.txt', part1, part2)
 
