@@ -1,3 +1,4 @@
+import time
 
 def part1(filepath):
 
@@ -53,12 +54,8 @@ def part2(filepath):
             # split winning and own numbers
             line = line.split(' | ')
 
-            winning_numbers = line[0].split(' ')
-            our_numbers = line[1].split(' ')
-
-            # remove empty intries in the lists
-            winning_numbers = [number for number in winning_numbers if number != '']
-            our_numbers = [number for number in our_numbers if number != '']
+            winning_numbers = line[0].split()
+            our_numbers = line[1].split()
 
             # keys are ints!
             cards_dict[card] = (winning_numbers, our_numbers)
@@ -82,4 +79,18 @@ def part2(filepath):
 
     return len(queue)
 
-print(part2('inputs/4.txt'))
+start = time.time()
+answer = part1('inputs/4.txt')
+end = time.time()
+
+print(f'part 1: answer {answer}')
+print(f'it took {(end - start) * 1000} ms\n')
+
+start = time.time()
+answer = part2('inputs/4.txt')
+end = time.time()
+
+print(f'part 2: answer {answer}')
+print(f'it took {(end - start) * 1000} ms')
+
+
