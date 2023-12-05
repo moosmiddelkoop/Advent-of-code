@@ -1,4 +1,6 @@
+import math
 from aoc_helper import *
+import re
 
 # CHANGE DAY
 DAY = 1
@@ -27,62 +29,58 @@ def part1(input):
 
     return total
 
-def part2(input):
 
-    data = read_input(input)
+def part2_2(filepath):
 
-    digit_dict = {'one': '1',
-                  'two': '2',
-                  'three': '3',
-                  'four': '4',
-                  'five': '5',
-                  'six': '6',
-                  'seven': '7',
-                  'eight': '8',
-                  'nine': '9',
-                  'zero': '0'}
-    
-    total = 0
 
-    data = ['gvzkmxg55twonem']
+    digit_dict = {'one': '1', 'two': '2', 'three': '3', 'four': '4', 'five': '5', 
+                  'six': '6', 'seven': '7', 'eight': '8', 'nine': '9',}
 
-    for line in data[:1]:
+    with open(filepath, 'r') as f:
 
-        print('before replacement')
-        print(line)
-        found = {}
+        total = 0
+        
+        for line in f.readlines():
 
-        for i in range(1, len(line) + 1):
+            earliest_digit_index = math.inf
+            earliest_digit = None
+            latest_digit_index = -math.inf
+            latest_digit = None
 
-            partial_line = line[:i]
+            for key, value in digit_dict.items():
 
-            if line[i - 1].isdigit():
-                found.append([i - 1, line[i - 1]])
+                if line.find(key) != -1:
+                    locations = [m.start() for m in re.finditer(key, line)]
 
-            for key in digit_dict.keys():
+                    if locations[0] < earliest_digit_index:
+                        earliest_digit_index = locations[0]
+                        earliest_digit = value
+                    if locations[-1] > latest_digit_index:
+                        latest_digit_index = locations[-1]
+                        latest_digit = value
 
-                if key in partial_line:
+            for i, char in enumerate(line):
+                
+                if char.isdigit() and i < earliest_digit_index:
+                    earliest_digit_index = i
+                    earliest_digit = char
+                if char.isdigit() and i > latest_digit_index:
+                    latest_digit_index = i
+                    latest_digit = char
 
-                    found.append([digit_dict[key])
+            if earliest_digit_index == latest_digit_index:
+                calibration_value = earliest_digit * 2
+            else:
+                calibration_value = earliest_digit + latest_digit
 
-        print('found')
-        print(found)
+            total += int(calibration_value)
 
-        # digits = [digit for digit in line if digit.isdigit()]
+    return total
+            
 
-        # print('digits')
-        # print(digits)
-
-        # added = digits[0] + digits[-1]
-
-        # print('added')
-        # print(added)
-
-        # total += int(added)
-
-pass
-
-print(part2('inputs/1.txt'))
+print(part2_2('inputs/1.txt'))
 
 # run(f'inputs/{DAY}.txt', part1, part2)
+
+
 
